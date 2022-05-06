@@ -10,8 +10,7 @@ import org.springframework.core.env.Environment;
 /**
  * 积木报表独立服务启动类
  */
-@SpringBootApplication
-@EnableAutoConfiguration(exclude={MongoAutoConfiguration.class})
+@SpringBootApplication(exclude={MongoAutoConfiguration.class})
 public class JimuReportApplication {
 
     public static void main(String[] args) {
