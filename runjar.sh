@@ -2,7 +2,6 @@
 #name:jar包启动脚本;
 #date:2020-08-15;
 #author：mercer;
-
 #此处修改脚本名称：
 APP_NAME=jimureport-example-1.5.jar
 #修改运行环境
@@ -13,12 +12,12 @@ LOG_FILE=''
 history_path="./back/"
 #保留文件数
 reservedNum=5
-
 #脚本菜单项
-usage() {
+usage(){
  echo "Usage: sh 脚本名.sh [start|stop|restart|status]"
  exit 1
 }
+
 is_exist(){
  pid=`ps -ef|grep $APP_NAME|grep -v grep|awk '{print $2}'`
  #如果不存在返回1，存在返回0
