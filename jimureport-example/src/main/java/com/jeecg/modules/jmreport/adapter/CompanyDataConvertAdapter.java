@@ -37,16 +37,16 @@ public class CompanyDataConvertAdapter implements ApiDataConvertAdapter {
     String get = "get";
     HttpHeaders headers = new HttpHeaders();
     MediaType type = MediaType.parseMediaType("application/json;charset=UTF-8");
-    String companyId = jsonObject.getJSONObject("companyId").toString();
-    String method = jsonObject.getJSONObject("method").toString();
-    String url = jsonObject.getJSONObject("url").toString();
-    String data = jsonObject.getJSONObject("data").toString();
+    String companyId = jsonObject.getString("companyid");
+    String method = jsonObject.getString("method");
+    String url = jsonObject.getString("url");
+    String data = jsonObject.getString("data");
     String[] dataList = data.split(",");
     headers.setContentType(type);
     headers.add("companyId",companyId);
     JSONObject postData = new JSONObject();
     for (String s : dataList) {
-      String[] keyValue = s.split("=");
+      String[] keyValue = s.split("-");
       String key = keyValue[0];
       String value = "null".equals(keyValue[1]) ? null : keyValue[1];
       postData.put(key,value);
@@ -57,7 +57,7 @@ public class CompanyDataConvertAdapter implements ApiDataConvertAdapter {
     }else if (get.equals(method)){
       result = JSON.parseObject(restTemplate.exchange(url, HttpMethod.GET,formEntity,String.class).getBody());
     }
-    return result.toJSONString();
+    return result.getJSONArray("data").toJSONString();
   }
 
 
