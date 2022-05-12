@@ -1,9 +1,17 @@
 package com.jeecg.modules.jmreport.adapter;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import org.apache.http.client.methods.HttpGet;
 import org.jeecg.modules.jmreport.desreport.render.handler.convert.ApiDataConvertAdapter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * @program: jimureport-demo
@@ -12,6 +20,9 @@ import org.springframework.stereotype.Component;
  */
 @Component("companyParser")
 public class CompanyDataConvertAdapter implements ApiDataConvertAdapter {
+  
+   @Autowired
+   private RestTemplate restTemplate;
 
   /**
    * 返回list数据集，转换成积木报表需要格式{}，没有嵌套
@@ -21,12 +32,32 @@ public class CompanyDataConvertAdapter implements ApiDataConvertAdapter {
    */
   @Override
   public String getData(JSONObject jsonObject) {
-    if(jsonObject.containsKey("result")){
-      JSONArray data = jsonObject.getJSONObject("result").getJSONArray("data");
-      return data.toJSONString();
-    }else{
-      return jsonObject.toJSONString();
+    JSONObject result = new JSONObject();
+    String post = "post";
+    String get = "get";
+    HttpHeaders headers = new HttpHeaders();
+    MediaType type = MediaType.parseMediaType("application/json;charset=UTF-8");
+    String companyId = jsonObject.getJSONObject("companyId").toString();
+    String method = jsonObject.getJSONObject("method").toString();
+    String url = jsonObject.getJSONObject("url").toString();
+    String data = jsonObject.getJSONObject("data").toString();
+    String[] dataList = data.split(",");
+    headers.setContentType(type);
+    headers.add("companyId",companyId);
+    JSONObject postData = new JSONObject();
+    for (String s : dataList) {
+      String[] keyValue = s.split("=");
+      String key = keyValue[0];
+      String value = "null".equals(keyValue[1]) ? null : keyValue[1];
+      postData.put(key,value);
     }
+    HttpEntity<String> formEntity = new HttpEntity<String>(postData.toString(), headers);
+    if (post.equals(method)){
+      result = JSON.parseObject(restTemplate.postForEntity(url,formEntity,String.class).getBody());
+    }else if (get.equals(method)){
+      result = JSON.parseObject(restTemplate.exchange(url, HttpMethod.GET,formEntity,String.class).getBody());
+    }
+    return result.toJSONString();
   }
 
 
