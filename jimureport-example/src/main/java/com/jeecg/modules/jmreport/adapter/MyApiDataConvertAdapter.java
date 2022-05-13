@@ -47,6 +47,7 @@ public class MyApiDataConvertAdapter  implements ApiDataConvertAdapter {
     }*/
     if(jsonObject.containsKey("result")){
       JSONArray data = jsonObject.getJSONObject("result").getJSONArray("data");
+      System.out.println(data);
       return data.toJSONString();
     }else{
       return "";
