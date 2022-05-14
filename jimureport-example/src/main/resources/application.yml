@@ -3,9 +3,9 @@ server:
 spring:
   #数据库
   datasource:
-    url: jdbc:mysql://${MYSQL-HOST:47.110.242.174}:${MYSQL-PORT:3306}/${MYSQL-DB:jimureport}?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
-    username: thxx
-    password: thxx@2019
+    url: jdbc:mysql://${MYSQL-HOST:localhost}:${MYSQL-PORT:3306}/${MYSQL-DB:jimureport}?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: th@2020
     driver-class-name: com.mysql.cj.jdbc.Driver
 jeecg :
   # local|minio|alioss
