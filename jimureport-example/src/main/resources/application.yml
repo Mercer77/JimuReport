@@ -7,11 +7,17 @@ spring:
     username: thxx
     password: thxx@2019
     driver-class-name: com.mysql.cj.jdbc.Driver
-jeecg :
+jeecg:
+  # 打印纸张配置 title描述 size宽高
+  printPaper:
+    - title: 标签
+      size:
+        - 70
+        - 100
   # local|minio|alioss
   uploadType: local
   # local
-  path :
+  path:
     #文件路径
     upload: /opt/upload
   # alioss
