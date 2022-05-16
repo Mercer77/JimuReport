@@ -13,8 +13,12 @@ jeecg:
     printPaper:
       - title: 标签
         size:
-          - 70
+          - 80
+          - 110
+      - title: 标签2
+        size:
           - 100
+          - 135
   # local|minio|alioss
   uploadType: local
   # local
