@@ -19,6 +19,22 @@ jeecg:
         size:
           - 100
           - 135
+      - title: 标签6*8
+        size:
+          - 60
+          - 80
+      - title: 标签10*15
+        size:
+          - 100
+          - 150
+      - title: 标签7.5*10.5
+        size:
+          - 75
+          - 105
+      - title: 标签7*10
+        size:
+          - 70
+          - 100
   # local|minio|alioss
   uploadType: local
   # local
