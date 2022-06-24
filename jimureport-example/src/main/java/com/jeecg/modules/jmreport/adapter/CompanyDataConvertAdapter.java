@@ -25,7 +25,6 @@ public class CompanyDataConvertAdapter implements ApiDataConvertAdapter {
     @Autowired
     private RestTemplate restTemplate;
 
-    private JSONObject apiData;
 
 
   /**
@@ -34,7 +33,7 @@ public class CompanyDataConvertAdapter implements ApiDataConvertAdapter {
    * @return
    */
     public JSONObject getApiData(JSONObject jsonObject) {
-      if (apiData == null){
+        JSONObject apiData = new JSONObject();
         String post = "post";
         String get = "get";
         HttpHeaders headers = new HttpHeaders();
@@ -78,7 +77,6 @@ public class CompanyDataConvertAdapter implements ApiDataConvertAdapter {
         } else if (get.equals(method)) {
             apiData = JSON.parseObject(restTemplate.exchange(url, HttpMethod.GET, formEntity, String.class).getBody());
         }
-      }
         return apiData;
     }
 
