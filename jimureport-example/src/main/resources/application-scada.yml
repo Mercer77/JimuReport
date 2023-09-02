@@ -1,0 +1,59 @@
+server:
+  port: 8084
+spring:
+  #数据库
+  datasource:
+    url: jdbc:mysql://${MYSQL-HOST:localhost}:${MYSQL-PORT:3306}/${MYSQL-DB:jimureport}?characterEncoding=UTF-8&useUnicode=true&useSSL=false&tinyInt1isBit=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Shanghai
+    username: th
+    password: th@2018
+    driver-class-name: com.mysql.cj.jdbc.Driver
+jeecg:
+  jmreport:
+    # 打印纸张配置 title描述 size宽高
+    printPaper:
+      - title: 标签
+        size:
+          - 80
+          - 110
+      - title: 标签2
+        size:
+          - 100
+          - 135
+      - title: 标签6*8
+        size:
+          - 60
+          - 80
+      - title: 标签10*15
+        size:
+          - 100
+          - 150
+      - title: 标签7.5*10.5
+        size:
+          - 75
+          - 105
+      - title: 标签7*10
+        size:
+          - 70
+          - 100
+  # local|minio|alioss
+  uploadType: local
+  # local
+  path:
+    #文件路径
+    upload: /opt/upload
+  # alioss
+  oss:
+    endpoint: ??
+    accessKey: ??
+    secretKey: ??
+    bucketName: jimureport
+  # minio
+  minio:
+    minio_url: http://minio.jeecg.com
+    minio_name: ??
+    minio_pass: ??
+    bucketName: ??
+#输出sql日志
+logging:
+  level:
+    org.jeecg.modules.jmreport : info
