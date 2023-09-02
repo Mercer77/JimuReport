@@ -3,7 +3,6 @@ package com.jeecg.modules;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
  * 积木报表独立服务启动类
  */
 @CrossOrigin
-@SpringBootApplication(exclude={MongoAutoConfiguration.class, DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude={MongoAutoConfiguration.class})
 public class JimuReportApplication {
 
     public static void main(String[] args) {
