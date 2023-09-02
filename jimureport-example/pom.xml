@@ -83,14 +83,14 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql-connector-java.version}</version>
-            <scope>runtime</scope>
+<!--            <scope>runtime</scope>-->
         </dependency>
         <!-- oracle驱动-->
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc6</artifactId>
             <version>11.2.0.3</version>
-            <scope>runtime</scope>
+<!--            <scope>runtime</scope>-->
         </dependency>
         <!-- ===需要什么数据库，手工打开注释=== -->
         <!--  sqlserver
