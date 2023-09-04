@@ -19,6 +19,10 @@ jeecg:
         size:
           - 100
           - 135
+      - title: 标签241*93
+        size:
+          - 241
+          - 93
       - title: 标签6*8
         size:
           - 60
