@@ -9,6 +9,12 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 jeecg:
   jmreport:
+    pageSize:
+      - 1
+      - 10
+      - 20
+      - 30
+      - 40
     # 打印纸张配置 title描述 size宽高
     printPaper:
       - title: 标签
